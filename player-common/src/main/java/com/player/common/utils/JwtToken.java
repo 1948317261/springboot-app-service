@@ -62,15 +62,12 @@ public class JwtToken {
             Claims claims = Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token).getBody();
             String subject = claims.getSubject();
             return (T) JSONObject.parseObject(subject, clazz);
-        } catch (SignatureException | MalformedJwtException e) {
-            return null;
-        } catch (ExpiredJwtException e) {
-            return null;
         } catch (Exception e) {
+            e.printStackTrace();
             return null;
         }
     }
-    
+
     public static String getUserId(String token){
         UserEntity userEntity = parserToken(token,UserEntity.class);
         if(userEntity != null)return userEntity.getUserId();

@@ -10,8 +10,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest
 @RunWith(SpringRunner.class)
 public class PlayerMusicApplicationTests {
-    @Autowired
-    private QQMusicService qqMusicService;
 
     @Test
     public void getSingerList() {
